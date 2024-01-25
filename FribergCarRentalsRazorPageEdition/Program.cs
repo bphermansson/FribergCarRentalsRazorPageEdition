@@ -1,3 +1,6 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using FribergCarRentalsRazorPageEdition.Data;
 namespace FribergCarRentalsRazorPageEdition
 {
     public class Program
@@ -5,6 +8,8 @@ namespace FribergCarRentalsRazorPageEdition
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<FribergCarRentalsRazorPageEditionContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("FribergCarRentalsRazorPageEditionContext") ?? throw new InvalidOperationException("Connection string 'FribergCarRentalsRazorPageEditionContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();

@@ -1,5 +1,20 @@
-html {
-  font-size: 14px;
+/* Definitioner & värden*/
+:root {
+    --bg-color: #e3ebee;
+    --bar-color: #7cc7da;
+    --color-two: #62caec;
+    --color-three: #d7e4f8;
+    --color-four: #f72c1e;
+    --color-five: #5407e4;
+    --color-six: #95afc0;
+    --color-green: #17f0ba;
+    --color-black: #100;
+    --color-white: rgb(250, 250, 240);
+    --color-lightgrey: rgb(216, 213, 213);
+    --color-yellow: #ece286;
+    --color-tablerowodd: #edeff3;
+    --color-tableroweven: #bbd1ee;
+    --panel-color: #c8e9f8;
 }
 
 @media (min-width: 768px) {
@@ -13,10 +28,316 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
+}
+/* Sidans body */
+body {
+    margin-bottom: 60px;
+    background-color: var(--bg-color);
+    font-family: Verdana, sans-serif;
 }
 
-body {
-  margin-bottom: 60px;
+/* Total sidbredd */
+div {
+    max-width: 60em;
+}
+    /* En list överst på sidan. */
+    div.topbar {
+        background-color: var(--bar-color);
+        padding: 1em;
+        min-height: 17em;
+    }
+    div.bottombar {
+        background-color: var(--bar-color);
+        padding: 1em;
+        min-height: 3em;
+    }
+
+/* Meny */
+div.menuitem {
+        background-color: var(--color-five);
+        border-color: var(--color-black);
+        border-width: 0.1em;
+        border-style: solid;
+        color: var(--color-black);
+        display: inline;
+        font-size: large;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 0.7em;
+        margin: 0.5em;
+        float: left;
+    }
+
+.menuitem a {
+    color: var(--color-three);
+    text-decoration: none;
+    font-size: large;
+}
+
+menuitem a:link {
+    text-decoration: none;
+}
+
+menuitem a:visited {
+    text-decoration: none;
+}
+
+menuitem a:hover {
+    text-decoration: none;
+}
+
+menuitem a:active {
+    text-decoration: none;
+}
+/*Rubrik för stycken */
+div.paragraph-header {
+    background-color: var(--bar-color);
+    margin: 1em;
+    padding: 1em;
+}
+/* Panel bakom sektionernas innehåll */
+.content {
+    background-color: var(--panel-color);
+    margin: 2em;
+}
+
+.container {
+    margin: 1em;
+}
+
+/* Sidans titel/logga. */
+p.pagetitle {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-black);
+}
+/* Kodstycken */
+p.code {
+    font-style: italic;
+}
+/* Rubriker */
+h1, h2, h3, h4 {
+    font-family: Verdana, sans-serif;
+}
+
+h1 {
+    font-size: larger;
+}
+
+h2 {
+    font-size: large;
+}
+
+h3 {
+    font-size: medium;
+}
+
+h4 {
+    font-size: small;
+}
+/* Knappar */
+button {
+    padding: 0.5em;
+}
+
+button.standard {
+   background-color: var(--color-three);
+}
+
+.function {
+    background-color: var(--color-five);
+    color: var(--color-three);
+}
+
+button.positive {
+    background-color: var(--color-green);
+}
+
+button.negative {
+    background-color: var(--color-four);
+    color: var(--color-white);
+}
+/* Knapplista */
+ul.buttonlist {
+    list-style-type: none;
+}
+
+li {
+    padding: 0.3em;
+}
+/* Flytande text/bild. */
+img.frontimage {
+    width: 10em;
+    float: right;
+}
+/* Laddningsindikator, "Spinner" */
+.loader {
+    border: 2em solid var(--color-one);
+    border-radius: 40%;
+    border-top: 1em solid var(--color-five);
+    width: 1em;
+    height: 2em;
+    animation: spin 4s linear infinite;
+    animation-direction: reverse;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* Meddelanderutor */
+.alert-error, .alert-success {
+    padding: 1.3em;
+    color: var(--color-white);
+    margin-bottom: 1.5em;
+    max-width: 15em;
+}
+
+.alert-error {
+    background-color: var(--color-four);
+}
+
+.alert-success {
+    background-color: var(--color-green);
+    color: var(--color-black);
+}
+
+.closebtn {
+    margin-left: 1.5em;
+    color: var(--color-white);
+    font-weight: bold;
+    float: right;
+    font-size: larger;
+    line-height: 1.1em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+/* Tabeller */
+table {
+    overflow-x: auto;
+}
+
+th {
+    background-color: var(--color-six);
+    padding: 0.5em;
+}
+
+table.longlist {
+    font-size: large;
+    padding: 1em;
+    margin: 0.3em;
+}
+
+.table-clickable tbody tr {
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+table.longlist tr {
+    margin: 1.5em;
+}
+
+table.longlist td {
+    padding: 0.1em;
+}
+
+table.longlist tr:nth-child(even) {
+    background-color: var(--color-tableroweven);
+}
+
+table.longlist tr:nth-child(odd) {
+    background-color: var(--color-tablerowodd);
+}
+
+table.manycolumns {
+    font-size: medium;
+    padding: 1em;
+    margin: 0.8em;
+}
+
+    table.manycolumns td {
+        margin: 0.8em;
+        padding: 0.5em;
+    }
+
+        table.manycolumns td:nth-child(even) {
+            background-color: var(--color-tableroweven);
+        }
+
+        table.manycolumns td:nth-child(odd) {
+            background-color: var(--color-tablerowodd);
+        }
+/* Paneler */
+.panel {
+    padding: 0.5em;
+    border-radius: 0.2em;
+    margin-top: 1em;
+}
+
+    .panel p {
+        background-color: var(--color-lightgrey);
+        padding: 0.6em;
+        margin-bottom: 0;
+    }
+
+.success-panel {
+    background-color: var(--color-green);
+}
+
+.neutral-panel {
+    background-color: var(--color-three);
+}
+
+.warning-panel {
+    background-color: var(--color-yellow);
+}
+
+.error-panel {
+    background-color: var(--color-four);
+}
+/* Formulär + formulärelement */
+.form-label {
+    display: block;
+    background-color: var(--color-two);
+    max-width: 15em;
+    padding: 0.3em;
+}
+
+input {
+    width: 15em;
+    box-shadow: 0.1em 0.1em 0.2em var(--color-six);
+    padding: 0.5em;
+    margin-top: 0.4em;
+}
+
+    input[type="text"], textarea {
+        background-color: var(--color-lightgrey);
+        font-size: medium;
+    }
+
+select {
+    background-color: var(--bar-color);
+    font-size: medium;
+    padding: 0.5em;
+    margin-top: 0.4em;
+}
+
+    select option {
+        background-color: var(--bar-color);
+        font-size: medium;
+    }
+
+.radio {
+    height: 1.5em;
+    width: 2em;
+    padding: 4em;
+    accent-color: var(--color-four);
 }
