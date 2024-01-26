@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FribergCarRentalsRazorPageEdition.Data;
+using FribergsCarRentals.DataAccess.Data;
 namespace FribergCarRentalsRazorPageEdition
 {
     public class Program
@@ -13,7 +14,11 @@ namespace FribergCarRentalsRazorPageEdition
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<FribergCarRentalsDbContext>(options => options.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = FribergCarRentals; Integrated Security = True; Connect Timeout = 30; Encrypt = False; Trust Server Certificate = False; Application Intent = ReadWrite; Multi Subnet Failover = False"));
 
+            builder.Services.AddTransient<ICarsRepository, CarsRepository>();
+            builder.Services.AddTransient<ICustomersRepository, CustomersRepository>();
+            builder.Services.AddTransient<IBookingsRepository, BookingsRepository>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
