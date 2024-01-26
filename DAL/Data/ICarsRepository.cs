@@ -11,6 +11,7 @@ namespace FribergsCarRentals.DataAccess.Data
         Car Get(int Id);
         IEnumerable<Car> GetAll();
         public bool CarExists(int Id);
+        public void Delete(Car Car);
         public void Save(Car Car);
 
     }

@@ -1,35 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using FribergCarRentalsMVC.Models;
-using FribergCarRentalsRazorPageEdition.Data;
+using FribergsCarRentals.DataAccess.Data;
+using Car = FribergsCarRentals.DataAccess.Data.Car;
 
 namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 {
     public class DeleteModel : PageModel
     {
-        private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
+        private ICarsRepository _carsRepository;
 
-        public DeleteModel(FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext context)
+        public DeleteModel(ICarsRepository carsRepository)
         {
-            _context = context;
+            _carsRepository = carsRepository;
         }
 
         [BindProperty]
         public Car Car { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var car = await _context.Car.FirstOrDefaultAsync(m => m.ID == id);
+            var car = _carsRepository.Get(id);
 
             if (car == null)
             {
@@ -42,21 +37,17 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            var car = await _context.Car.FindAsync(id);
+            var car = _carsRepository.Get(id);
             if (car != null)
             {
-                Car = car;
-                _context.Car.Remove(Car);
-                await _context.SaveChangesAsync();
+                _carsRepository.Delete(car);
             }
-
             return RedirectToPage("./Index");
         }
     }

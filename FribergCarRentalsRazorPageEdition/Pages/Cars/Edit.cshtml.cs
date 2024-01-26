@@ -50,9 +50,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
                 return Page();
             }
 
-
-            //_carsRepository.Attach(Car).State = EntityState.Modified;
-
             try
             {
                 _carsRepository.Save(Car);
