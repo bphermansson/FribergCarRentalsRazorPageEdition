@@ -11,6 +11,9 @@ namespace FribergsCarRentals.DataAccess.Data
         Booking Get(int Id);
         List<Booking> GetAll();
         void Add(Booking booking);
+        void Delete(Booking booking);
+        void Save(Booking booking);
+        bool BookingExists(int Id);
 
     }
 }

@@ -30,6 +30,13 @@ namespace FribergsCarRentals.DataAccess.Data
             context.Bookings.Add(booking);
             context.SaveChanges();
         }
+        public void Save(Booking booking)
+        {
 
+        }
+        public bool BookingExists(int Id)
+        {
+            return true;
+        }
     }
 }

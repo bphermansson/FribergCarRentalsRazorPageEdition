@@ -13,6 +13,5 @@ namespace FribergsCarRentals.DataAccess.Data
         public bool CarExists(int Id);
         public void Delete(Car Car);
         public void Save(Car Car);
-
     }
 }

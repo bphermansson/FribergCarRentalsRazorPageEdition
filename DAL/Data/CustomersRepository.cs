@@ -25,5 +25,10 @@ namespace FribergsCarRentals.DataAccess.Data
         {
             return context.Customers.ToList();
         }
+        public void Delete(int Id)
+        {
+
+        }
+
     }
 }
