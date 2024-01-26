@@ -8,29 +8,31 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FribergCarRentalsMVC.Models;
 using FribergCarRentalsRazorPageEdition.Data;
+using FribergsCarRentals.DataAccess.Data;
+using Car = FribergsCarRentals.DataAccess.Data.Car;
 
 namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 {
     public class EditModel : PageModel
     {
-        private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
+        private ICarsRepository _carsRepository;
 
-        public EditModel(FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext context)
+        public EditModel(ICarsRepository carsRepository)
         {
-            _context = context;
+            _carsRepository = carsRepository;
         }
 
         [BindProperty]
         public Car Car { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var car =  await _context.Car.FirstOrDefaultAsync(m => m.ID == id);
+            var car = _carsRepository.Get(id);
             if (car == null)
             {
                 return NotFound();
@@ -48,11 +50,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
                 return Page();
             }
 
-            _context.Attach(Car).State = EntityState.Modified;
+
+            //_carsRepository.Attach(Car).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                _carsRepository.Save(Car);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,7 +74,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 
         private bool CarExists(int id)
         {
-            return _context.Car.Any(e => e.ID == id);
+            return _carsRepository.CarExists(id);
         }
     }
 }

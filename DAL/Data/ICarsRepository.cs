@@ -10,5 +10,8 @@ namespace FribergsCarRentals.DataAccess.Data
     {
         Car Get(int Id);
         IEnumerable<Car> GetAll();
+        public bool CarExists(int Id);
+        public void Save(Car Car);
+
     }
 }

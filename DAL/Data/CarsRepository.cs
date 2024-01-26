@@ -1,4 +1,6 @@
-﻿namespace FribergsCarRentals.DataAccess.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace FribergsCarRentals.DataAccess.Data
 {
     public class CarsRepository : ICarsRepository
     {
@@ -16,6 +18,15 @@
         public IEnumerable<Car> GetAll()
         {
             return context.Cars.ToList();
+        }
+        public bool CarExists(int Id)
+        {
+            return context.Cars.Any(e => e.ID == Id);
+        }
+        public void Save(Car Car) 
+        {
+            context.Attach(Car).State = EntityState.Modified;
+            context.SaveChanges();
         }
     }
 }

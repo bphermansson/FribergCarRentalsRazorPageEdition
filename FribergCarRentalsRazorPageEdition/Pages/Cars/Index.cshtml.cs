@@ -14,30 +14,23 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 {
     public class IndexModel : PageModel
     {
-        private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
+        //private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
         private ICarsRepository _carsRepository;
-        private ICustomersRepository _customersRepository;
-        private IBookingsRepository _bookingsRepository;
+        //private ICustomersRepository _customersRepository;
+        //private IBookingsRepository _bookingsRepository;
         private IList<FribergsCarRentals.DataAccess.Data.Car> car = default!;
 
-        public IndexModel(ICarsRepository carsRepository, ICustomersRepository customersRepository, IBookingsRepository bookingsRepository)
+        //public IndexModel(ICarsRepository carsRepository, ICustomersRepository customersRepository, IBookingsRepository bookingsRepository)
+        public IndexModel(ICarsRepository carsRepository)
         {
             _carsRepository = carsRepository;
-            _customersRepository = customersRepository;
-            _bookingsRepository = bookingsRepository;
+            //_customersRepository = customersRepository;
+            //_bookingsRepository = bookingsRepository;
         }
-
-        //public IndexModel(FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext context)
-        //{
-        //    _context = context;
-        //}
 
         public IList<Car> Car { get => car; set => car = value; }
         public async Task OnGetAsync()
         {
-            //Car = (IList<Car>)await _context.Car.ToListAsync();
-            //IEnumerable<FribergsCarRentals.DataAccess.Data.Car> Car = _carsRepository.GetAll();
-            //var cars = _context.Car;
             Car = (IList<Car>)_carsRepository.GetAll();
         }
     }
