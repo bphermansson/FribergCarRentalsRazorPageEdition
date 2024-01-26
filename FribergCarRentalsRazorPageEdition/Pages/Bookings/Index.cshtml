@@ -14,65 +14,47 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].ID)
+                @Html.DisplayNameFor(model => model.Booking[0].ID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].FirstName)
+                @Html.DisplayNameFor(model => model.Booking[0].Customer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].LastName)
+                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Address)
+                @Html.DisplayNameFor(model => model.Booking[0].StopDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].City)
+                @Html.DisplayNameFor(model => model.Booking[0].CarId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].PostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].CustomerBookings)
+                @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Customer) {
+        @foreach (var item in Model.Booking)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ID)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.Customer)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
+                    @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.Address)
+                    @Html.DisplayFor(modelItem => item.StopDate)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.City)
+                    @Html.DisplayFor(modelItem => item.CarId)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    @Html.DisplayFor(modelItem => item.BookingDate)
             </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerBookings)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostalCode)
-                </td>
-
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

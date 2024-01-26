@@ -32,11 +32,17 @@ namespace FribergsCarRentals.DataAccess.Data
         }
         public void Save(Booking booking)
         {
+            throw new NotImplementedException();
 
         }
         public bool BookingExists(int Id)
         {
             return true;
+        }
+
+        public void Delete(Booking booking)
+        {
+            throw new NotImplementedException();
         }
     }
 }
