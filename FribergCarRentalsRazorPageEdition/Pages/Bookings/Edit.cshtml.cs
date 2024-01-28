@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using FribergCarRentalsMVC.Models;
-using FribergCarRentalsRazorPageEdition.Data;
 using FribergsCarRentals.DataAccess.Data;
-using Car = FribergsCarRentals.DataAccess.Data.Car;
 
 namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 {
@@ -52,7 +44,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
             try
             {
-                _bookingsRepository.Save(Booking);
+                _bookingsRepository.SaveChanges(Booking);
             }
             catch (DbUpdateConcurrencyException)
             {

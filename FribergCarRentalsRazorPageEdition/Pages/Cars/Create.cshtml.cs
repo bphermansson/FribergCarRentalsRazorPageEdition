@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using FribergCarRentalsMVC.Models;
 using FribergsCarRentals.DataAccess.Data;
 using Car = FribergsCarRentals.DataAccess.Data.Car;
 
@@ -32,7 +31,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
             }
 
             _carsRepository.Save(Car);
-
             return RedirectToPage("./Index");
         }
     }

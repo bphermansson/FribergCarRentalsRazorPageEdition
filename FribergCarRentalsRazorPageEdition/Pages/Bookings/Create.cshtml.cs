@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FribergsCarRentals.DataAccess.Data;
+using Booking = FribergsCarRentals.DataAccess.Data.Booking;
 
 namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 {
@@ -8,7 +9,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
     {
         private IBookingsRepository _bookingsRepository;
 
-        public CreateModel(BookingsRepository bookingsRepository)
+        public CreateModel(IBookingsRepository bookingsRepository)
         {
             _bookingsRepository = bookingsRepository;
         }

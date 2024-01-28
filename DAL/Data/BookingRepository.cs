@@ -39,7 +39,8 @@ namespace FribergsCarRentals.DataAccess.Data
         }
         public void Delete(Booking booking)
         {
-            throw new NotImplementedException();
+            context.Remove(booking);
+            context.SaveChanges();
         }
         public void SaveChanges(Booking booking)
         {
