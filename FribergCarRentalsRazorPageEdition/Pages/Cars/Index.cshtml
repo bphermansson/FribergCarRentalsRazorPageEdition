@@ -32,10 +32,10 @@
                 @Html.DisplayNameFor(model => model.Car[0].Color)
             </th>
             <th>
-                    
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Car[0].ImageLink)
+            </th>
+            <th colspan="3">
+                Admin
             </th>
             <th></th>
         </tr>
@@ -67,8 +67,12 @@
                 @Html.DisplayFor(modelItem => item.ImageLink)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+            </td>
+            <td>
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>

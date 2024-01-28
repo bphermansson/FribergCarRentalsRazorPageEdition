@@ -11,5 +11,7 @@ namespace FribergsCarRentals.DataAccess.Data
         Customer Get(int Id);
         List<Customer> GetAll();
         void Delete(int Id);
+        public void Save(Customer Customer);
+
     }
 }

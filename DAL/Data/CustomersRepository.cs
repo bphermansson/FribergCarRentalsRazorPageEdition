@@ -29,6 +29,10 @@ namespace FribergsCarRentals.DataAccess.Data
         {
 
         }
+        public void Save(Customer customer)
+        {
+
+        }
 
     }
 }

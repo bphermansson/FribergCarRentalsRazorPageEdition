@@ -26,59 +26,65 @@
                 @Html.DisplayNameFor(model => model.Customer[0].Address)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Customer[0].City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer[0].PhoneNumber)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Customer[0].PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].City)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Customer[0].Country)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Customer[0].PhoneNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Customer[0].CustomerBookings)
+            </th>
+            <th colspan="3">
+                Admin
             </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Customer) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ID)
-            </td>
-            <td>
+        @foreach (var item in Model.Customer) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerBookings)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PostalCode)
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
                 </td>
-
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
