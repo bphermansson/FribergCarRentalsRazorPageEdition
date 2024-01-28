@@ -9,21 +9,21 @@ using Microsoft.EntityFrameworkCore;
 using FribergCarRentalsMVC.Models;
 using FribergCarRentalsRazorPageEdition.Data;
 using FribergsCarRentals.DataAccess.Data;
-using Car = FribergsCarRentals.DataAccess.Data.Car;
+
 
 namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 {
     public class EditModel : PageModel
     {
-        private ICarsRepository _carsRepository;
+        private ICustomersRepository _customersRepository;
 
-        public EditModel(ICarsRepository carsRepository)
+        public EditModel(ICustomersRepository customersRepository)
         {
-            _carsRepository = carsRepository;
+            _customersRepository = customersRepository;
         }
 
         [BindProperty]
-        public Car Car { get; set; } = default!;
+        public Customer Customer { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -32,12 +32,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
                 return NotFound();
             }
 
-            var car = _carsRepository.Get(id);
-            if (car == null)
+            var customer = _customersRepository.Get(id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            Car = car;
+            Customer = customer;
             return Page();
         }
 
@@ -52,11 +52,11 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 
             try
             {
-                _carsRepository.Save(Car);
+                _customersRepository.SaveChanges(Customer);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CarExists(Car.ID))
+                if (!CarExists(Customer.ID))
                 {
                     return NotFound();
                 }
@@ -65,13 +65,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
                     throw;
                 }
             }
-
             return RedirectToPage("./Index");
         }
 
         private bool CarExists(int id)
         {
-            return _carsRepository.CarExists(id);
+            return _customersRepository.CustomerExists(id);
         }
     }
 }

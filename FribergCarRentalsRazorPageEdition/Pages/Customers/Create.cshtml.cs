@@ -7,11 +7,11 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 {
     public class CreateModel : PageModel
     {
-        private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
+        private ICustomersRepository _customersRepository;
 
-        public CreateModel(FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext context)
+        public CreateModel(ICustomersRepository customersRepository)
         {
-            _context = context;
+            _customersRepository = customersRepository;
         }
 
         public IActionResult OnGet()
@@ -29,10 +29,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
             {
                 return Page();
             }
-
-            //_context.Customer.Add(Customer);
-            await _context.SaveChangesAsync();
-
+            _customersRepository.Save(Customer);
             return RedirectToPage("./Index");
         }
     }

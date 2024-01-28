@@ -1,10 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FribergsCarRentals.DataAccess.Data
 {
@@ -25,13 +19,24 @@ namespace FribergsCarRentals.DataAccess.Data
         {
             return context.Customers.ToList();
         }
-        public void Delete(int Id)
+        public bool CustomerExists(int Id)
         {
-
+            return context.Customers.Any(e => e.ID == Id);
+        }
+        public void Delete(Customer customer)
+        {
+            context.Remove(customer);
+            context.SaveChanges();
+        }
+        public void SaveChanges(Customer customer)
+        {
+            context.Attach(customer).State = EntityState.Modified;
+            context.SaveChanges();
         }
         public void Save(Customer customer)
         {
-
+            context.Add(customer);
+            context.SaveChanges();
         }
 
     }

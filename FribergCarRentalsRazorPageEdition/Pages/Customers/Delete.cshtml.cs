@@ -43,10 +43,10 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
             {
                 return NotFound();
             }
-            var car = _customersRepository.Get(id);
-            if (car != null)
+            var customer = _customersRepository.Get(id);
+            if (customer != null)
             {
-                _customersRepository.Delete(id);
+                _customersRepository.Delete(customer);
             }
             return RedirectToPage("./Index");
         }

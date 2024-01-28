@@ -10,7 +10,9 @@ namespace FribergsCarRentals.DataAccess.Data
     {
         Customer Get(int Id);
         List<Customer> GetAll();
-        void Delete(int Id);
+        public bool CustomerExists(int Id);
+        void Delete(Customer Customer);
+        public void SaveChanges(Customer Customer);
         public void Save(Customer Customer);
 
     }
