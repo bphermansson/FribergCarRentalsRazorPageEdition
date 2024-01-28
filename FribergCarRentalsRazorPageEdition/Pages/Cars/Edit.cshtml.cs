@@ -52,7 +52,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 
             try
             {
-                _carsRepository.Save(Car);
+                _carsRepository.SaveChanges(Car);
             }
             catch (DbUpdateConcurrencyException)
             {

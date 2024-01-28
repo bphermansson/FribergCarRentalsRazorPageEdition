@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using FribergCarRentalsMVC.Models;
+using FribergsCarRentals.DataAccess.Data;
+using Car = FribergsCarRentals.DataAccess.Data.Car;
 
 namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 {
     public class CreateModel : PageModel
     {
-        private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
+        private ICarsRepository _carsRepository;
 
-        public CreateModel(FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext context)
+        public CreateModel(ICarsRepository carsRepository)
         {
-            _context = context;
+            _carsRepository = carsRepository;
         }
 
         public IActionResult OnGet()
@@ -29,8 +31,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
                 return Page();
             }
 
-            _context.Car.Add(Car);
-            await _context.SaveChangesAsync();
+            _carsRepository.Save(Car);
 
             return RedirectToPage("./Index");
         }

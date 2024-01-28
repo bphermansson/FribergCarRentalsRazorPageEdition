@@ -28,10 +28,15 @@ namespace FribergsCarRentals.DataAccess.Data
             context.Remove(Car);
             context.SaveChangesAsync();
         }
-        public void Save(Car Car) 
+        public void SaveChanges(Car Car)
         {
             context.Attach(Car).State = EntityState.Modified;
-            context.SaveChangesAsync();
+            context.SaveChanges();
+        }
+        public void Save(Car Car) 
+        {
+            context.Add(Car);
+            context.SaveChanges();
         }
     }
 }
