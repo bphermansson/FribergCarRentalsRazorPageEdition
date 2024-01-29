@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model FribergCarRentalsRazorPageEdition.Pages.Cars.IndexModel
 
 @{
@@ -62,9 +62,7 @@
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
             <td>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageLink)
+                <a asp-page="./Image" asp-route-ImageLink="@item.ImageLink">Picture</a>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>

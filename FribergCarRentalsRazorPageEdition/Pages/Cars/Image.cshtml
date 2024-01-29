@@ -1,0 +1,16 @@
+﻿@page "{ImageLink}"
+@model FribergCarRentalsRazorPageEdition.Pages.Cars.ImageModel
+@{
+    ViewData["Title"] = "Image";
+}
+@{
+    if (@Model.ImageLink.Length > 5 )
+    {
+        <img src="/images/@Model.ImageLink" alt="Car image" width="500px" />
+    }
+    else
+    {
+        <p>No image available</p>
+    }
+}
+
