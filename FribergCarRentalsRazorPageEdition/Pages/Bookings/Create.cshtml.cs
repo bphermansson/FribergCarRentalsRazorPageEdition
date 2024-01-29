@@ -14,8 +14,16 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             _bookingsRepository = bookingsRepository;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(int id)
         {
+            /*
+             * We shall create of user names to choose from
+             * 
+             * 
+             * 
+             */
+            var x = id; //  The car's id
+            ViewData["user"] = "testuser";
             return Page();
         }
 
@@ -29,6 +37,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             {
                 return Page();
             }
+
+
+
             _bookingsRepository.Add(Booking);
             return RedirectToPage("./Index");
         }
