@@ -12,31 +12,29 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
         [ViewData]
         public int Id { get; set; }
+        public int Customer {  get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         [BindProperty, DataType(DataType.Date)]
         public DateOnly Date {  get; set; }
         [BindProperty, DataType(DataType.Date)]
-        public DateTime DateTomorrow { get; set; }
+        public DateOnly DateTomorrow { get; set; }
 
         public CreateModel(IBookingsRepository bookingsRepository)
         {
             _bookingsRepository = bookingsRepository;
         }
 
-        public IActionResult OnGet(int id, string make, string model)
+        public IActionResult OnGet(int id, int customer, string make, string model)
         {
             Id = id;
+            Customer = customer;
             Make = make;
             Model = model;
 
-            // Pre-filled dates, Doesnt work yet
-            var dateTime = DateTime.Now;
-            //Date = DateTime.Now;
+            // Remove time , keep date
             Date = DateOnly.FromDateTime(DateTime.Now);
-
-            //Date = DateTime.;
-            DateTomorrow = dateTime.AddDays(1);
+            DateTomorrow = Date.AddDays(1);
             
             return Page();
         }
@@ -51,8 +49,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             {
                 return Page();
             }
-
-
 
             _bookingsRepository.Add(Booking);
             return RedirectToPage("./Index");
