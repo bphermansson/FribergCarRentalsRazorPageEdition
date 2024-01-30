@@ -67,7 +67,7 @@
                 <a asp-page="./Image" asp-route-ImageLink="@item.ImageLink">Picture</a>
             </td>
             <td>
-                 <a asp-page="../Bookings/Create" asp-route-id="@item.ID">Book</a>
+                    <a asp-page="../Bookings/Create" asp-route-id="@item.ID" asp-route-make="@item.Make" asp-route-model="@item.Model">Book</a>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>

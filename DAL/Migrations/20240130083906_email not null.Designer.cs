@@ -4,6 +4,7 @@ using FribergsCarRentals.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FribergsCarRentals.DataAccess.Migrations
 {
     [DbContext(typeof(FribergCarRentalsDbContext))]
-    partial class FribergCarRentalsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240130083906_email not null")]
+    partial class emailnotnull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,10 +41,6 @@ namespace FribergsCarRentals.DataAccess.Migrations
 
                     b.Property<int>("Customer")
                         .HasColumnType("int");
-
-                    b.Property<string>("CustomerEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CustomerID")
                         .HasColumnType("int");

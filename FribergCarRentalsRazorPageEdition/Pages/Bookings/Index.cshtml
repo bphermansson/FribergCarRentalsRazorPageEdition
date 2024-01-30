@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.Booking[0].Customer)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Booking[0].CustomerEmail)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Booking[0].StartDate)
             </th>
             <th>
@@ -43,6 +46,9 @@
             <td>
                     @Html.DisplayFor(modelItem => item.Customer)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
             <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
             </td>
