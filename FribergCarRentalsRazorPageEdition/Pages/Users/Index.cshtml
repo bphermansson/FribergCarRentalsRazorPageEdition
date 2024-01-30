@@ -40,6 +40,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Customer[0].CustomerBookings)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].IsAdmin)
+            </th>
             <th colspan="3">
                 Admin
             </th>
@@ -74,6 +80,12 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerBookings)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAdmin)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>

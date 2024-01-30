@@ -7,9 +7,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 {
     public class CreateModel : PageModel
     {
-        private ICustomersRepository _customersRepository;
+        private IUsersRepository _customersRepository;
 
-        public CreateModel(ICustomersRepository customersRepository)
+        public CreateModel(IUsersRepository customersRepository)
         {
             _customersRepository = customersRepository;
         }
@@ -20,7 +20,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
         }
 
         [BindProperty]
-        public Customer Customer { get; set; } = default!;
+        public User Customer { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()

@@ -9,6 +9,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
     public class CreateModel : PageModel
     {
         private IBookingsRepository _bookingsRepository;
+        private IUsersRepository _customersRepository;
 
         [ViewData]
         public int Id { get; set; }
@@ -20,9 +21,11 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
         [BindProperty, DataType(DataType.Date)]
         public DateOnly DateTomorrow { get; set; }
 
-        public CreateModel(IBookingsRepository bookingsRepository)
+        public CreateModel(IBookingsRepository bookingsRepository, IUsersRepository customersRepository)
         {
             _bookingsRepository = bookingsRepository;
+            _customersRepository = customersRepository;
+
         }
 
         public IActionResult OnGet(int id, int customer, string make, string model)
@@ -50,8 +53,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
                 return Page();
             }
 
+            // Is the user registered?
+
+
+
             _bookingsRepository.Add(Booking);
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Confirmation");
         }
     }
 }

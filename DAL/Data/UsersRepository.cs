@@ -2,38 +2,38 @@
 
 namespace FribergsCarRentals.DataAccess.Data
 {
-    public class CustomersRepository : ICustomersRepository
+    public class UsersRepository : IUsersRepository
     {
         private FribergCarRentalsDbContext context;
-        public CustomersRepository(FribergCarRentalsDbContext context)
+        public UsersRepository(FribergCarRentalsDbContext context)
         {
             this.context = context;
         }
 
-        public Customer Get(int Id)
+        public User Get(int Id)
         {
-            return context.Customers.Find(Id);
+            return context.Users.Find(Id);
         }
 
-        public List<Customer> GetAll()
+        public List<User> GetAll()
         {
-            return context.Customers.ToList();
+            return context.Users.ToList();
         }
         public bool CustomerExists(int Id)
         {
-            return context.Customers.Any(e => e.ID == Id);
+            return context.Users.Any(e => e.ID == Id);
         }
-        public void Delete(Customer customer)
+        public void Delete(User user)
         {
-            context.Remove(customer);
+            context.Remove(user);
             context.SaveChanges();
         }
-        public void SaveChanges(Customer customer)
+        public void SaveChanges(User customer)
         {
             context.Attach(customer).State = EntityState.Modified;
             context.SaveChanges();
         }
-        public void Save(Customer customer)
+        public void Save(User customer)
         {
             context.Add(customer);
             context.SaveChanges();

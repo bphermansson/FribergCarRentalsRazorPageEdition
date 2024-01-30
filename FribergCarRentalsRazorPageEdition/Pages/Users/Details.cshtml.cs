@@ -6,14 +6,14 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 {
     public class DetailsModel : PageModel
     {
-        private ICustomersRepository _customersRepository;
+        private IUsersRepository _customersRepository;
 
-        public DetailsModel(ICustomersRepository customersRepository)
+        public DetailsModel(IUsersRepository customersRepository)
         {
             _customersRepository = customersRepository;
         }
 
-        public Customer Customer { get; set; } = default!;
+        public User Customer { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int id)
         {

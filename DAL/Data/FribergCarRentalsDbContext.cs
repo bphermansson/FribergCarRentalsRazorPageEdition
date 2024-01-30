@@ -8,7 +8,7 @@ namespace FribergsCarRentals.DataAccess.Data
 
         public DbSet<Car> Cars { get; set; }
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public FribergCarRentalsDbContext(DbContextOptions<FribergCarRentalsDbContext> options)
             :base(options) { }

@@ -15,15 +15,15 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 {
     public class EditModel : PageModel
     {
-        private ICustomersRepository _customersRepository;
+        private IUsersRepository _customersRepository;
 
-        public EditModel(ICustomersRepository customersRepository)
+        public EditModel(IUsersRepository customersRepository)
         {
             _customersRepository = customersRepository;
         }
 
         [BindProperty]
-        public Customer Customer { get; set; } = default!;
+        public User Customer { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int id)
         {

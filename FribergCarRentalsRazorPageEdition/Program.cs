@@ -15,9 +15,10 @@ namespace FribergCarRentalsRazorPageEdition
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<FribergCarRentalsDbContext>(options => options.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = FribergCarRentals; Integrated Security = True; Connect Timeout = 30; Encrypt = False; Trust Server Certificate = False; Application Intent = ReadWrite; Multi Subnet Failover = False"));
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             builder.Services.AddTransient<ICarsRepository, CarsRepository>();
-            builder.Services.AddTransient<ICustomersRepository, CustomersRepository>();
+            builder.Services.AddTransient<IUsersRepository, UsersRepository>();
             builder.Services.AddTransient<IBookingsRepository, BookingsRepository>();
             var app = builder.Build();
 
