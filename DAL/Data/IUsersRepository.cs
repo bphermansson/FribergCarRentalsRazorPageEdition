@@ -9,6 +9,7 @@ namespace FribergsCarRentals.DataAccess.Data
     public interface IUsersRepository
     {
         User Get(int Id);
+        User GetByEmail(string Email);
         List<User> GetAll();
         public bool CustomerExists(int Id);
         void Delete(User Customer);

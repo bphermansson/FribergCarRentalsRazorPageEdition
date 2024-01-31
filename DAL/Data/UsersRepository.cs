@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace FribergsCarRentals.DataAccess.Data
 {
@@ -14,7 +15,10 @@ namespace FribergsCarRentals.DataAccess.Data
         {
             return context.Users.Find(Id);
         }
-
+        public User GetByEmail(string Email)
+        {
+            return context.Users.FirstOrDefault(s => s.Email == Email);
+        }
         public List<User> GetAll()
         {
             return context.Users.ToList();

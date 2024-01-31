@@ -15,6 +15,7 @@ namespace FribergsCarRentals.DataAccess.Data
         public string PostalCode { get; set; }
         public string Country { get; set; }
         public List<Booking>? CustomerBookings { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public bool IsAdmin {  get; set; }
 
