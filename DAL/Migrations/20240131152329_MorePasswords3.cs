@@ -5,7 +5,7 @@
 namespace FribergsCarRentals.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class emailnotnullagain : Migration
+    public partial class MorePasswords3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

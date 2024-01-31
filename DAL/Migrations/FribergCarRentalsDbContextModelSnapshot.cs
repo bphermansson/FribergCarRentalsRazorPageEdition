@@ -43,18 +43,18 @@ namespace FribergsCarRentals.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CustomerID")
-                        .HasColumnType("int");
-
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
 
                     b.Property<DateOnly>("StopDate")
                         .HasColumnType("date");
 
+                    b.Property<int?>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("UserID");
 
                     b.ToTable("Bookings");
                 });
@@ -105,7 +105,7 @@ namespace FribergsCarRentals.DataAccess.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("FribergsCarRentals.DataAccess.Data.Customer", b =>
+            modelBuilder.Entity("FribergsCarRentals.DataAccess.Data.User", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -125,11 +125,22 @@ namespace FribergsCarRentals.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -143,17 +154,17 @@ namespace FribergsCarRentals.DataAccess.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("FribergsCarRentals.DataAccess.Data.Booking", b =>
                 {
-                    b.HasOne("FribergsCarRentals.DataAccess.Data.Customer", null)
+                    b.HasOne("FribergsCarRentals.DataAccess.Data.User", null)
                         .WithMany("CustomerBookings")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("UserID");
                 });
 
-            modelBuilder.Entity("FribergsCarRentals.DataAccess.Data.Customer", b =>
+            modelBuilder.Entity("FribergsCarRentals.DataAccess.Data.User", b =>
                 {
                     b.Navigation("CustomerBookings");
                 });
