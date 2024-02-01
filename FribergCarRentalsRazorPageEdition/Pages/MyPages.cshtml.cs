@@ -23,6 +23,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         public string Password { get; set; }
         [ValidateNever]
         public string LoginVisibility { get; set; }
+        public string LoggedInMessage { get; set; }
         [TempData]
         public string Message { get; set; }
         [TempData]
@@ -37,16 +38,16 @@ namespace FribergCarRentalsRazorPageEdition.Pages
 
         public Login login { get; set; } = default!;
 
-        public void OnGet(string loginVisibility)
+        public void OnGet()
         {
             LoginVisibility = "";
+            LoggedInMessage = "None";
             var cook = Request.Cookies["loggedIn"];
             if (cook == "True")
             {
-                Message = "You are logged in";
-                RedirectToPage("./MyPagesConfirmation");
+                LoginVisibility = "None";
+                LoggedInMessage = "";
             }
-
         }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -61,7 +62,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             var userInDb = _usersRepository.GetByEmail(Username); 
             if (userInDb == null)
             {
-                Message = "No such user";
+                Message = "No such user, try again";
             }
             else
             {

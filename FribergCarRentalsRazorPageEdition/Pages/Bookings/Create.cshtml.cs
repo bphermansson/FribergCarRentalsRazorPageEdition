@@ -30,6 +30,13 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
         public IActionResult OnGet(int id, int customer, string make, string model)
         {
+            var logginInCookie = Request.Cookies["loggedIn"];
+            if (logginInCookie != "True")
+            {
+                RedirectToPage("./MyPages");
+
+            }
+
             Id = id;
             Customer = customer;
             Make = make;
