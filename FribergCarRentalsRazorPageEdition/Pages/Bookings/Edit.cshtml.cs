@@ -61,7 +61,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             return RedirectToPage("./Index");
         }
 
-        private bool CarExists(int id)
+        private bool CarExists(int? id)
         {
             return _bookingsRepository.BookingExists(id);
         }

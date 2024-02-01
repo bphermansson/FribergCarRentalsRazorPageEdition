@@ -4,6 +4,7 @@ using FribergsCarRentals.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FribergsCarRentals.DataAccess.Migrations
 {
     [DbContext(typeof(FribergCarRentalsDbContext))]
-    partial class FribergCarRentalsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240201130407_MorePasswords5")]
+    partial class MorePasswords5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -57,7 +57,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             {
                 return Page();
             }
-            var v = Username;
 
             var userInDb = _usersRepository.GetByEmail(Username); 
             if (userInDb == null)
@@ -72,13 +71,13 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                     CookieOptions options = new CookieOptions();
                     options.Expires = DateTimeOffset.UtcNow.AddHours(2);
                     httpContextAccessor.HttpContext.Response.Cookies.Append("loggedIn", "True", options);
+                    httpContextAccessor.HttpContext.Response.Cookies.Append("Username", Username, options);
                 }
                 else
                 {
                     Message = "Incorrect password";
                 }
                 SavedUsername = Username;
-
             }
             return RedirectToPage("./MyPagesConfirmation");
         }

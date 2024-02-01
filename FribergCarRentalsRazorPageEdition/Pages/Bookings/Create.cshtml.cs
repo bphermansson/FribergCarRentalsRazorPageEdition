@@ -13,32 +13,45 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
         [ViewData]
         public int Id { get; set; }
-        public int Customer {  get; set; }
+        public int User {  get; set; }
+        [BindProperty, DataType(DataType.EmailAddress)]
+        public string UserEmail { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
         [BindProperty, DataType(DataType.Date)]
         public DateOnly Date {  get; set; }
         [BindProperty, DataType(DataType.Date)]
         public DateOnly DateTomorrow { get; set; }
+        public string BookingFormVisibility { get; set; }
+        public string LoginNoticeVisibility { get; set; }
+
+        [TempData]
+        public string Message { get; set; }
 
         public CreateModel(IBookingsRepository bookingsRepository, IUsersRepository customersRepository)
         {
             _bookingsRepository = bookingsRepository;
             _customersRepository = customersRepository;
-
         }
 
         public IActionResult OnGet(int id, int customer, string make, string model)
         {
             var logginInCookie = Request.Cookies["loggedIn"];
+            var Username = Request.Cookies["Username"];
+            LoginNoticeVisibility = "none";
+
+
             if (logginInCookie != "True")
+
             {
+                LoginNoticeVisibility = "";
                 RedirectToPage("./MyPages");
 
             }
 
             Id = id;
-            Customer = customer;
+            User = customer;
+            UserEmail = Username;
             Make = make;
             Model = model;
 

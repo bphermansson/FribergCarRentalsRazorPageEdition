@@ -10,7 +10,7 @@ namespace FribergsCarRentals.DataAccess.Data
             this.context = context;
         }
 
-        public Booking Get(int Id)
+        public Booking Get(int? Id)
         {
             return context.Bookings.Find(Id);
         }
@@ -18,6 +18,7 @@ namespace FribergsCarRentals.DataAccess.Data
         public List<Booking> GetAll()
         {
             return context.Bookings.ToList();
+
         }
 
         // Duplicate of save!
@@ -26,7 +27,7 @@ namespace FribergsCarRentals.DataAccess.Data
             context.Bookings.Add(booking);
             context.SaveChanges();
         }
-        public bool BookingExists(int Id)
+        public bool BookingExists(int? Id)
         {
             return true;
         }

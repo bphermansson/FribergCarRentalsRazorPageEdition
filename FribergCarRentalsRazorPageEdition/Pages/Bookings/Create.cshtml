@@ -8,14 +8,20 @@
 <h1>Boka @Model.Make @Model.Model</h1>
 
 <hr />
-<div class="row">
+<div class="row" style="display: @Model.LoginNoticeVisibility;">
+    You must login
+    </div>
+
+<div class="row" style="display: @Model.BookingFormVisibility;">
     <div class="col-md-4">
+        @Html.ValidationSummary()
+
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Booking.CustomerEmail" class="control-label"></label>
-                <input asp-for="Booking.CustomerEmail" class="form-control" />
-                <span asp-validation-for="Booking.CustomerEmail" class="text-danger"></span>
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" value=@Model.UserEmail/>
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
             </div>
             <p>@ViewData["user"]</p>
             <div class="form-group">
@@ -25,14 +31,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Booking.StopDate" class="control-label"></label>
-                <input asp-for="Booking.StopDate" type="date" data-val="true" class="form-control"  value=@Model.Date />
+                <input asp-for="Booking.StopDate" type="date" data-val="true" class="form-control"  value=@Model.DateTomorrow />
                 <span asp-validation-for="Booking.StopDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Book" class="btn btn-primary" />
                 <input type="hidden" asp-for="Booking.CarId" value=@Model.Id/>
-                <input type="hidden" asp-for="Booking.Customer" value=@Model.Customer />
+                <input type="hidden" asp-for="Booking.Customer" value=@Model.User />
                 <input type="hidden" asp-for="Booking.BookingDate" value=@Model.Date />
+                <input type="hidden" asp-for="Booking.UserEmail" value=@Model.UserEmail />
             </div>
         </form>
     </div>
