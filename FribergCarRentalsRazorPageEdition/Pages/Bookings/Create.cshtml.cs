@@ -16,7 +16,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
         public int User {  get; set; }
         [BindProperty, DataType(DataType.EmailAddress)]
         public string UserEmail { get; set; }
+        [BindProperty]
         public string Make { get; set; }
+        [BindProperty]
         public string Model { get; set; }
         [BindProperty, DataType(DataType.Date)]
         public DateOnly Date {  get; set; }
@@ -36,29 +38,29 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
         public IActionResult OnGet(int id, int customer, string make, string model)
         {
-            var logginInCookie = Request.Cookies["loggedIn"];
+            var loggedInCookie = Request.Cookies["loggedIn"];
             var Username = Request.Cookies["Username"];
             LoginNoticeVisibility = "none";
 
-
-            if (logginInCookie != "True")
-
+            if (loggedInCookie != "True")
             {
                 LoginNoticeVisibility = "";
-                RedirectToPage("./MyPages");
+                BookingFormVisibility = "none";
+
 
             }
+            else
+            {
+                Id = id;
+                User = customer;
+                UserEmail = Username;
+                Make = make;
+                Model = model;
 
-            Id = id;
-            User = customer;
-            UserEmail = Username;
-            Make = make;
-            Model = model;
-
-            // Remove time , keep date
-            Date = DateOnly.FromDateTime(DateTime.Now);
-            DateTomorrow = Date.AddDays(1);
-            
+                // Remove time , keep date
+                Date = DateOnly.FromDateTime(DateTime.Now);
+                DateTomorrow = Date.AddDays(1);
+            }
             return Page();
         }
 
@@ -72,10 +74,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             {
                 return Page();
             }
-
-            // Is the user registered?
-
-
+            
+            Message = $"Customer email: {UserEmail}\nCar make&model: {Make} {Model}\nFrom: {Booking.StartDate} to {Booking.StopDate}";
+            
 
             _bookingsRepository.Add(Booking);
             return RedirectToPage("./Confirmation");

@@ -79,7 +79,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                 }
                 SavedUsername = Username;
             }
-            return RedirectToPage("./MyPagesConfirmation");
+            return RedirectToPage("./LoginConfirmation");
         }
     }
 }

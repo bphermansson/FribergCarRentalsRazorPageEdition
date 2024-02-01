@@ -6,7 +6,16 @@
 @{
     if (@Model.ImageLink.Length > 5 )
     {
-        <img src="/images/@Model.ImageLink" alt="Car image" width="500px" />
+        string[] isItALink = Model.ImageLink.Split(':');
+        if (isItALink[0] == "http" || isItALink[0] == "https")
+        {
+            <a href="@Model.ImageLink" target="_blank">Link to car picture</a>
+
+          }
+        else
+        {
+            <img src="/images/@Model.ImageLink" alt="Car image" width="500px" />
+        }
     }
     else
     {
