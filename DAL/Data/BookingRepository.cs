@@ -18,7 +18,6 @@ namespace FribergsCarRentals.DataAccess.Data
         public List<Booking> GetAll()
         {
             return context.Bookings.ToList();
-
         }
 
         // Duplicate of save!
@@ -45,6 +44,11 @@ namespace FribergsCarRentals.DataAccess.Data
         {
             context.Add(booking);
             context.SaveChanges();
+        }
+
+        public List<Booking> GetUserBookings(string userEmail)
+        {
+            return context.Bookings.Where(s=>s.UserEmail==userEmail).ToList();
         }
     }
 }

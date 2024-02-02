@@ -23,7 +23,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         {
             httpContextAccessor.HttpContext.Response.Cookies.Delete("loggedIn");
             Message = "You are logged out";
-            return RedirectToPage("./MyPagesConfirmation");
+            return RedirectToPage("./LoginConfirmation");
         }
     }
 }
