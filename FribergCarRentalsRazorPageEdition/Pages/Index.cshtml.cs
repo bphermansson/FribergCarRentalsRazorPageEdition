@@ -14,7 +14,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
 
         public void OnGet()
         {
-
+            ViewData["LoginMessage"] = "Hello!";
         }
     }
 }

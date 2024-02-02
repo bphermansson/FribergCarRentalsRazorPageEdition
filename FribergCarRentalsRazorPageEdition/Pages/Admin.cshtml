@@ -1,0 +1,17 @@
+﻿@page
+@model FribergCarRentalsRazorPageEdition.Pages.AdminModel
+@{
+}
+<h2>Welcome @Model.userName</h2>
+
+@if(Model.isAdmin != null)
+{
+    <p><a asp-page="/Users/Index">Kundregister</a></p>
+    <p><a asp-page="/Cars/Index">Bilregister</a></p>
+    <p><a asp-page="/Bookings/Index">Bokningar</a></p>
+}
+else
+{
+    <p>Permission denied.</p>
+}
+

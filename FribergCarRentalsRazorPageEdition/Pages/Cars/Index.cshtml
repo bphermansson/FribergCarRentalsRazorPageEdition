@@ -7,9 +7,6 @@
 
 <h1>Cars</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -69,15 +66,18 @@
             <td>
                     <a asp-page="../Bookings/Create" asp-route-id="@item.ID" asp-route-make="@item.Make" asp-route-model="@item.Model">Book</a>
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
-            </td>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
-            </td>
-            <td>
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
+                @if (Model.isAdmin != null)
+                {
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                    </td>
+                    <td>
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                }
         </tr>
 }
     </tbody>

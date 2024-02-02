@@ -11,6 +11,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         private readonly IHttpContextAccessor httpContextAccessor;
         [TempData]
         public string Message { get; set; }
+        public string Username { get; set; }
+
 
         public LogOutModel(IHttpContextAccessor httpContextAccessor)
         {
@@ -18,10 +20,14 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         }
         public void OnGet()
         {
+            Username = Request.Cookies["Username"];
+
         }
         public async Task<IActionResult> OnPostAsync()
         {
             httpContextAccessor.HttpContext.Response.Cookies.Delete("loggedIn");
+            httpContextAccessor.HttpContext.Response.Cookies.Delete("Username");
+            httpContextAccessor.HttpContext.Response.Cookies.Delete("isAdmin");
             Message = "You are logged out";
             return RedirectToPage("./LoginConfirmation");
         }

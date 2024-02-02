@@ -14,7 +14,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         private IUsersRepository _usersRepository;
         private readonly IHttpContextAccessor httpContextAccessor;
 
-        //public Login Login { get; set; } = default!;
         [Required]
         [BindProperty]
         public string Username { get; set; }
@@ -47,6 +46,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             {
                 LoginVisibility = "None";
                 LoggedInMessage = "";
+                Username = Request.Cookies["Username"];
+
             }
         }
 
@@ -72,6 +73,11 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                     options.Expires = DateTimeOffset.UtcNow.AddHours(2);
                     httpContextAccessor.HttpContext.Response.Cookies.Append("loggedIn", "True", options);
                     httpContextAccessor.HttpContext.Response.Cookies.Append("Username", Username, options);
+                    if(userInDb.IsAdmin == true)
+                    {
+                        httpContextAccessor.HttpContext.Response.Cookies.Append("IsAdmin", "True", options);
+
+                    }
                 }
                 else
                 {

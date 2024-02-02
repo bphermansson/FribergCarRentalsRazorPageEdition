@@ -7,6 +7,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
     public class DeleteModel : PageModel
     {
         private IBookingsRepository _bookingsRepository;
+        [TempData]
+        public string message { get; set; }
 
         public DeleteModel(IBookingsRepository bookingsRepository)
         {
@@ -45,6 +47,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             var booking = _bookingsRepository.Get(id);
             if (booking != null)
             {
+                message = "Booking deleted.";
                 _bookingsRepository.Delete(booking);
             }
             return RedirectToPage("./Index");

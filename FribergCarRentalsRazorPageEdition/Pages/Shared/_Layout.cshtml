@@ -32,10 +32,13 @@
             <div class="menuitem">
                 <a asp-page="/Bookings/Index" asp-route-onlyUsers="true">My bookings</a>
             </div>
+            <div class="menuitem">
+                <a asp-page="/Admin" asp-route-onlyUsers="true">Admin</a>
+            </div>
         </div>
         <!-- No more float left -->
         <div style="clear:both;"></div>
-
+        @ViewData["LoginName"]
     </header>
     <div class="container">
         <main role="main">
@@ -47,12 +50,7 @@
         <div class="bottombar">
             &copy; 2024 - Friberg Car Rentals
         </div>
-        <p><a asp-page="/Users/Index">Kundregister</a></p>
-        <p><a asp-page="/Cars/Index">Bilregister</a></p>
-        <p><a asp-page="/Bookings/Index">Bokningar</a></p>
-
     </footer>
-
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

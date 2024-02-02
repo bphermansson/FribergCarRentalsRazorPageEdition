@@ -29,8 +29,11 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
         }
 
         public IList<Car> Car { get => car; set => car = value; }
+        public string isAdmin { get; set; }
+
         public async Task OnGetAsync()
         {
+            isAdmin = Request.Cookies["isAdmin"];
             Car = (IList<Car>)_carsRepository.GetAll();
         }
     }
