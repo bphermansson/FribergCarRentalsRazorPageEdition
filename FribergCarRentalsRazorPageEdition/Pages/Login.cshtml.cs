@@ -16,11 +16,14 @@ namespace FribergCarRentalsRazorPageEdition.Pages
 
         [Required]
         [BindProperty]
-        public string Username { get; set; }
+        public string Email { get; set; }
         [Required]
         [BindProperty]
         public string Password { get; set; }
-        [ValidateNever]
+
+        [BindProperty]
+        public User UserModel{ get; set; }
+        public  User User { get; set; }
         public string LoginVisibility { get; set; }
         public string LoggedInMessage { get; set; }
         [TempData]
@@ -28,14 +31,15 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         [TempData]
         public string SavedUsername { get; set; }
 
-
         public MyPagesModel(IUsersRepository usersRepository, IHttpContextAccessor httpContextAccessor)
         {
             _usersRepository = usersRepository;
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public Login login { get; set; } = default!;
+//        public Login login { get; set; } = default!;
+
+
 
         public void OnGet()
         {
@@ -46,20 +50,20 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             {
                 LoginVisibility = "None";
                 LoggedInMessage = "";
-                Username = Request.Cookies["Username"];
+                Email = Request.Cookies["Username"];
 
             }
         }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostLoginAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
-            var userInDb = _usersRepository.GetByEmail(Username); 
+            var userInDb = _usersRepository.GetByEmail(Email); 
             if (userInDb == null)
             {
                 Message = "No such user, try again";
@@ -72,20 +76,45 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                     CookieOptions options = new CookieOptions();
                     options.Expires = DateTimeOffset.UtcNow.AddHours(2);
                     httpContextAccessor.HttpContext.Response.Cookies.Append("loggedIn", "True", options);
-                    httpContextAccessor.HttpContext.Response.Cookies.Append("Username", Username, options);
+                    httpContextAccessor.HttpContext.Response.Cookies.Append("Username", Email, options);
                     if(userInDb.IsAdmin == true)
                     {
                         httpContextAccessor.HttpContext.Response.Cookies.Append("IsAdmin", "True", options);
-
                     }
+                    return RedirectToPage("./Cars/Index");
+
                 }
                 else
                 {
                     Message = "Incorrect password";
                 }
-                SavedUsername = Username;
+                SavedUsername = Email;
             }
             return RedirectToPage("./LoginConfirmation");
+        }
+        public async Task<IActionResult> OnPostRegisterAsync()
+        {
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
+
+            _usersRepository.Save(UserModel);
+
+            // Also auto login the new user
+            var userInDb = _usersRepository.GetByEmail(UserModel.Email);
+            CookieOptions options = new CookieOptions();
+            options.Expires = DateTimeOffset.UtcNow.AddHours(2);
+            httpContextAccessor.HttpContext.Response.Cookies.Append("loggedIn", "True", options);
+            httpContextAccessor.HttpContext.Response.Cookies.Append("Username", UserModel.Email, options);
+            if (userInDb.IsAdmin == true)
+            {
+                httpContextAccessor.HttpContext.Response.Cookies.Append("IsAdmin", "True", options);
+            }
+            // Shold return to the car we wanted to rent
+            return RedirectToPage("./Cars/Index");
+
         }
     }
 }

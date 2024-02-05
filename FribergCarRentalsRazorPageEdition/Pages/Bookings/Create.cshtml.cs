@@ -10,10 +10,11 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
     {
         private IBookingsRepository _bookingsRepository;
         private IUsersRepository _customersRepository;
+        private int user;
 
         [ViewData]
         public int Id { get; set; }
-        public int User {  get; set; }
+        public User UserData { get; set; }
         [BindProperty, DataType(DataType.EmailAddress)]
         public string UserEmail { get; set; }
         [BindProperty]
@@ -46,13 +47,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             {
                 LoginNoticeVisibility = "";
                 BookingFormVisibility = "none";
-
-
+                return RedirectToPage("../Login");
             }
             else
             {
                 Id = id;
-                User = customer;
+                //User = customer;
                 UserEmail = Username;
                 Make = make;
                 Model = model;
