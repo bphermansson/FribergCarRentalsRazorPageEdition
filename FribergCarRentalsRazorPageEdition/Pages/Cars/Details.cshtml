@@ -10,56 +10,95 @@
 <div>
     <h4>Car</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Make)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Make)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Model)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Model)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Year)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Year)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.EngineType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.EngineType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.NoOfSeats)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.NoOfSeats)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.Color)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.Color)
-        </dd>
-        <dt class="col-sm-2">
-        </dt>
-        <dd class="col-sm-10">
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Car.ImageLink)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Car.ImageLink)
-        </dd>
-    </dl>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Car Details
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Car.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Car.Make)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Car.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Car.Model)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Car.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Car.Year)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Car.EngineType)
+                </td>
+                <td>
+                    @{
+                        switch (Model.Car.EngineType)
+                        {
+                            case 1:
+                                <p>Petrol</p>
+                                break;
+                            case 2:
+                                <p>Diesel</p>
+                                break;
+                            case 3:
+                                <p>Electric</p>
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Car.NoOfSeats)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Car.NoOfSeats)
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Car.Color)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Car.Color)
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <a asp-page="./Image" asp-route-ImageLink="@Model.Car.ImageLink">Picture</a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Car.ID">Edit</a> |
     <a asp-page="./Index">Back to List</a>
 </div>

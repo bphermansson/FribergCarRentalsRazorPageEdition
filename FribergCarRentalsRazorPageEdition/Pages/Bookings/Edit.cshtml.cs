@@ -8,7 +8,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
     public class EditModel : PageModel
     {
         private IBookingsRepository _bookingsRepository;
-
+        [TempData]
+        public string Message { get; set; }
         public EditModel(IBookingsRepository bookingsRepository)
         {
             _bookingsRepository = bookingsRepository;
@@ -35,7 +36,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
@@ -44,6 +45,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
 
             try
             {
+                Message = "Booking edited.";
                 _bookingsRepository.SaveChanges(Booking);
             }
             catch (DbUpdateConcurrencyException)
@@ -58,7 +60,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Confirmation");
         }
 
         private bool CarExists(int? id)

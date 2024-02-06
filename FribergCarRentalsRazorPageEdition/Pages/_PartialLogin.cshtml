@@ -1,0 +1,45 @@
+﻿@model FribergCarRentalsRazorPageEdition.Pages.MyPagesModel
+@{
+}
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    @* <div class="form-group">
+    <label asp-for="User.Email" class="control-label"></label>
+    <input asp-for="User.Email" class="form-control" />
+    <span asp-validation-for="User.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="User.Password" class="control-label"></label>
+    <input asp-for="User.Password" class="form-control" />
+    <span asp-validation-for="User.Password" class="text-danger"></span> *@
+
+    <table>
+        <tr>
+            <td class="desc">
+                <label asp-for="Email" class="control-label"></label>
+
+            </td>
+            <td class="inp">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="desc">
+                <label asp-for="Password" class="control-label"></label>
+            </td>
+            <td class="inp">
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="desc">
+            </td>
+            <td class="inp">
+                <div class="form-group">
+                    <input type="submit" value="Log in" class="btn btn-primary" asp-page-handler="Login" />
+                </div>
+            </td>
+    </table>
+</form>

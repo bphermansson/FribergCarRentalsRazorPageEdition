@@ -8,7 +8,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
     {
         private IBookingsRepository _bookingsRepository;
         [TempData]
-        public string message { get; set; }
+        public string Headline { get; set; }
+        [TempData]
+        public string Message { get; set; }
 
         public DeleteModel(IBookingsRepository bookingsRepository)
         {
@@ -45,12 +47,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
                 return NotFound();
             }
             var booking = _bookingsRepository.Get(id);
-            if (booking != null)
-            {
-                message = "Booking deleted.";
+            //if (booking != null)
+            //{
+                Message = "Booking deleted.";
                 _bookingsRepository.Delete(booking);
-            }
-            return RedirectToPage("./Index");
+            //}
+            return RedirectToPage("./Confirmation");
         }
     }
 }

@@ -3,17 +3,17 @@
 
 @{
     ViewData["Title"] = "Create";
+    //string url = HttpContext.Request.Path;
+    //TempData["url"] = url;
+
 }
 
 <h1>Boka @Model.Make @Model.Model</h1>
 
 <hr />
-    <div class="row" style="display: @Model.LoginNoticeVisibility;">
-        You must login first!
-    </div>
-
 <div class="row" style="display: @Model.BookingFormVisibility;">
     <div class="col-md-4">
+
         @Html.ValidationSummary()
 
         <form method="post">
@@ -37,7 +37,6 @@
             <div class="form-group">
                 <input type="submit" value="Book" class="btn btn-primary" />
                 <input type="hidden" asp-for="Booking.CarId" value=@Model.Id/>
-                <input type="hidden" asp-for="Booking.Customer" value=@Model.User />
                 <input type="hidden" asp-for="Booking.BookingDate" value=@Model.Date />
                 <input type="hidden" asp-for="Booking.UserEmail" value=@Model.UserEmail />
             </div>

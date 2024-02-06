@@ -1,0 +1,14 @@
+﻿When logged in as admin, My Booking shows all bookings, not just the users
+
+Admin/Bokningar. Wrong language, link doesnt work. No bookings listed.
+
+Admin cookie isnt deleted on logout
+
+Booking/Delete, faulty table. Back-link goes to car list, not booking list.
+
+Car list, headers are wrong
+
+
+
+
+

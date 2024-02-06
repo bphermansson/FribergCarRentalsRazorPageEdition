@@ -37,10 +37,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             this.httpContextAccessor = httpContextAccessor;
         }
 
-//        public Login login { get; set; } = default!;
-
-
-
         public void OnGet()
         {
             LoginVisibility = "";
@@ -81,7 +77,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                     {
                         httpContextAccessor.HttpContext.Response.Cookies.Append("IsAdmin", "True", options);
                     }
-                    return RedirectToPage("./Cars/Index");
+                    string Url="", Make="", Model="";
+                    if (TempData.ContainsKey("url"))
+                        Url = TempData["url"].ToString();
+                        Make = TempData["make"].ToString();
+                        Model = TempData["model"].ToString();
+                    return RedirectToPage(Url, new { make = Make, model = Model });
 
                 }
                 else
@@ -90,6 +91,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                 }
                 SavedUsername = Email;
             }
+
             return RedirectToPage("./LoginConfirmation");
         }
         public async Task<IActionResult> OnPostRegisterAsync()

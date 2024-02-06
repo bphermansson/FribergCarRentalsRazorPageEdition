@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FribergCarRentalsRazorPageEdition.Pages
 {
@@ -11,6 +13,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         {
             isAdmin = Request.Cookies["isAdmin"];
             userName = Request.Cookies["Username"];
+
         }
     }
 }

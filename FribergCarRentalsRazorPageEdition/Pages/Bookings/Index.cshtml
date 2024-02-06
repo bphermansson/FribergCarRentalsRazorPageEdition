@@ -16,9 +16,6 @@
                 @Html.DisplayNameFor(model => model.Booking[0].ID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Customer)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Booking[0].UserEmail)
             </th>
             <th>
@@ -28,24 +25,24 @@
                 @Html.DisplayNameFor(model => model.Booking[0].StopDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Booking[0].CarId)
+                Car Info
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
             </th>
+            <th>
+                Admin
+            </th>
         </tr>
     </thead>
     <tbody>
-        @if(Model.Booking != null)
+        @if (Model.Booking != null || @TempData["Booking"] != null)
         {
             foreach (var item in Model.Booking)
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.ID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Customer)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.UserEmail)
@@ -57,14 +54,14 @@
                         @Html.DisplayFor(modelItem => item.StopDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CarId)
+                        <a asp-page="./../Cars/Details" asp-route-id="@item.CarId">Details</a>
+
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.BookingDate)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
                         <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
                     </td>
                 </tr>
@@ -74,6 +71,5 @@
         {
             <h4>No bookings (are you logged in?)</h4>
         }
-
     </tbody>
 </table>

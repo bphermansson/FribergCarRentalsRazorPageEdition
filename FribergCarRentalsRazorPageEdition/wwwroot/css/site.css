@@ -1,11 +1,11 @@
 /* Definitioner & värden*/
 :root {
-    --bg-color: #e3ebee;
-    --bar-color: #7cc7da;
+    --bg-color: #b8bdb5d4;
+    --bar-color: #b8bdb5d4;
     --color-two: #62caec;
     --color-three: #d7e4f8;
     --color-four: #f72c1e;
-    --color-five: #5407e4;
+    --color-five: #d7c695;
     --color-six: #95afc0;
     --color-green: #17f0ba;
     --color-black: #100;
@@ -15,6 +15,7 @@
     --color-tablerowodd: #edeff3;
     --color-tableroweven: #bbd1ee;
     --panel-color: #c8e9f8;
+    --menuitemcolor: #faca53;
 }
 
 @media (min-width: 768px) {
@@ -43,25 +44,25 @@ body {
 div {
     max-width: 60em;
 }
-    /* En list överst på sidan. */
-    div.topbar {
-        background-color: var(--bar-color);
-        padding: 1em;
-        min-height: 17em;
-    }
-    div.bottombar {
-        background-color: var(--bar-color);
-        padding: 1em;
-        min-height: 3em;
-    }
+/* En list överst på sidan. */
+div.topbar {
+    background-color: var(--bar-color);
+    padding: 1em;
+    min-height: 17em;
+}
+div.bottombar {
+    background-color: var(--bar-color);
+    padding: 1em;
+    min-height: 3em;
+}
 
 /* Meny */
-div.menuitem {
+    div.menuitem {
         background-color: var(--color-five);
         border-color: var(--color-black);
         border-width: 0.1em;
         border-style: solid;
-        color: var(--color-black);
+        color: var(--menuitemcolor);
         display: inline;
         font-size: large;
         text-align: center;
@@ -72,7 +73,7 @@ div.menuitem {
     }
 
 .menuitem a {
-    color: var(--color-three);
+    /*color: var(--color-three);*/
     text-decoration: none;
     font-size: large;
 }
@@ -225,10 +226,7 @@ table {
     overflow-x: auto;
 }
 
-th {
-    background-color: var(--color-six);
-    padding: 0.5em;
-}
+
 
 table.longlist {
     font-size: large;

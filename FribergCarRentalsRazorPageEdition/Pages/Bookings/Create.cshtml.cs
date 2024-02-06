@@ -29,7 +29,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
         public string LoginNoticeVisibility { get; set; }
 
         [TempData]
+        public string Headline { get; set; }
         public string Message { get; set; }
+
 
         public CreateModel(IBookingsRepository bookingsRepository, IUsersRepository customersRepository)
         {
@@ -47,15 +49,22 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             {
                 LoginNoticeVisibility = "";
                 BookingFormVisibility = "none";
+                TempData["url"] = "Bookings/Create";
+                TempData["make"] = make;
+                TempData["model"] = model;
                 return RedirectToPage("../Login");
             }
             else
             {
                 Id = id;
-                //User = customer;
                 UserEmail = Username;
                 Make = make;
                 Model = model;
+
+                //if (Make == null)
+                //{
+                //     make = TempData["make"].ToString();
+                //}
 
                 // Remove time , keep date
                 Date = DateOnly.FromDateTime(DateTime.Now);
@@ -74,7 +83,13 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             {
                 return Page();
             }
-            
+
+            //if(Make=="")
+            //{
+            //    Make = TempData["make"].ToString();
+            //}
+
+            Headline = "Confirmation: Thanks for your booking!";
             Message = $"Customer email: {UserEmail}\nCar make&model: {Make} {Model}\nFrom: {Booking.StartDate} to {Booking.StopDate}";
             
 

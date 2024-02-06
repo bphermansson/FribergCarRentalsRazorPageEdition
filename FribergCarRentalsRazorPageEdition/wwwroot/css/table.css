@@ -1,0 +1,25 @@
+﻿body {
+}
+thead th {
+    
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+th {
+    background-color: #b8bdb5d4;
+    padding: 0.5em;
+}
+.desc {
+    width: 5em;
+    text-align: right;
+    font-weight: 600;
+}
+.inp {
+    width: 7em;
+}
+
+input[type="submit" i] {
+    background-color: #d7c695;
+}

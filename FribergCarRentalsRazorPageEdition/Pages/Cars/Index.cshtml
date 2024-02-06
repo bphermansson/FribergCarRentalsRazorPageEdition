@@ -6,7 +6,8 @@
 }
 
 <h1>Cars</h1>
-
+<a asp-page="./Create">Add a new car</a>
+<p></p>
 <table class="table">
     <thead>
         <tr>
@@ -20,23 +21,17 @@
                 @Html.DisplayNameFor(model => model.Car[0].Year)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Car[0].EngineType)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Car[0].NoOfSeats)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Car[0].Color)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Car[0].ImageLink)
-            </th>
-            <th>
-
-            </th>
-            <th colspan="3">
-                Admin
-            </th>
+             @if (Model.isAdmin != null)
+            {
+                <th colspan="3">
+                    Admin
+                </th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -52,9 +47,6 @@
                 @Html.DisplayFor(modelItem => item.Year)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EngineType)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NoOfSeats)
             </td>
             <td>
@@ -64,7 +56,10 @@
                 <a asp-page="./Image" asp-route-ImageLink="@item.ImageLink">Picture</a>
             </td>
             <td>
-                    <a asp-page="../Bookings/Create" asp-route-id="@item.ID" asp-route-make="@item.Make" asp-route-model="@item.Model">Book</a>
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
+            </td>
+            <td>
+                <a asp-page="../Bookings/Create" asp-route-id="@item.ID" asp-route-make="@item.Make" asp-route-model="@item.Model">Book</a>
             </td>
                 @if (Model.isAdmin != null)
                 {
@@ -79,6 +74,6 @@
                     </td>
                 }
         </tr>
-}
+    }
     </tbody>
 </table>

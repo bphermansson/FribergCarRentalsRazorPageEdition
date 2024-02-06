@@ -14,6 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Booking.ID" />
             <div class="form-group">
+                <label asp-for="Booking.UserEmail" class="control-label"></label>
+                <input asp-for="Booking.UserEmail" class="form-control" readonly />
+                <span asp-validation-for="Booking.UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Booking.Customer" class="control-label"></label>
                 <input asp-for="Booking.Customer" class="form-control" />
                 <span asp-validation-for="Booking.Customer" class="text-danger"></span>

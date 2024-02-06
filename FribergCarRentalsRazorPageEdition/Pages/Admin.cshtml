@@ -10,8 +10,12 @@
     <p><a asp-page="/Cars/Index">Bilregister</a></p>
     <p><a asp-page="/Bookings/Index">Bokningar</a></p>
 }
+else if (Model.userName == null){
+    Redirect("./Login");
+}
 else
 {
-    <p>Permission denied.</p>
-}
+    string url = HttpContext.Request.Path;
+    TempData["url"] = url;
+    <p>This is not an admin account, try again.</p>}
 
