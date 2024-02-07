@@ -4,11 +4,12 @@
 }
 <h2>Welcome @Model.userName</h2>
 
-@if(Model.isAdmin != null)
+@if(Model.isAdmin != null && Model.isAdmin == true)
 {
-    <p><a asp-page="/Users/Index">Kundregister</a></p>
-    <p><a asp-page="/Cars/Index">Bilregister</a></p>
-    <p><a asp-page="/Bookings/Index">Bokningar</a></p>
+    <h4>Add / Edit / Delete:</h4>
+    <p><a asp-page="/Users/Index">Users</a></p>
+    <p><a asp-page="/Cars/Index">Cars</a></p>
+    <a asp-page="/Bookings/Index" asp-route-onlyUsers="false">Bookings</a>
 }
 else if (Model.userName == null){
     Redirect("./Login");

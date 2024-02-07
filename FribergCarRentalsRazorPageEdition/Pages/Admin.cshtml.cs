@@ -1,3 +1,4 @@
+using FribergsCarRentals.DataAccess.Data;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,13 +8,19 @@ namespace FribergCarRentalsRazorPageEdition.Pages
 {
     public class AdminModel : PageModel
     {
-        public string isAdmin { get; set; }
+        private IUsersRepository _usersRepository;
+        public AdminModel(IUsersRepository usersRepository)
+        {
+            _usersRepository = usersRepository;
+        }
+        public bool isAdmin { get; set; }
         public string userName { get; set; }
         public void OnGet()
         {
-            isAdmin = Request.Cookies["isAdmin"];
+            //isAdmin = Request.Cookies["isAdmin"];
             userName = Request.Cookies["Username"];
-
+            var userInDb = _usersRepository.GetByEmail(userName);
+            isAdmin = userInDb.IsAdmin;
         }
     }
 }

@@ -41,13 +41,14 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         {
             LoginVisibility = "";
             LoggedInMessage = "None";
+            TempData["url"] = "./Index";
             var cook = Request.Cookies["loggedIn"];
             if (cook == "True")
             {
                 LoginVisibility = "None";
                 LoggedInMessage = "";
                 Email = Request.Cookies["Username"];
-
+                Message = "You are logged in.";
             }
         }
 

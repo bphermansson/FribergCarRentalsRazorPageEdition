@@ -2,6 +2,8 @@
 @model FribergCarRentalsRazorPageEdition.Pages.LogOutModel
 @{
     ViewData["Title"] = "LogOut";
+    Response.Cookies.Delete("isAdmin");
+
 }
 <h4>Log out @Model.Username</h4>
 

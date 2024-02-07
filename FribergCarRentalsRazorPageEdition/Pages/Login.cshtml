@@ -4,11 +4,13 @@
 }
 
 <h4>Login</h4>
+<h4>@TempData["Message"]</h4>
+
 <hr />
 <table>
     <tr>
         <th>
-            Logga in
+             Logga in
         </th>
         <th>
             Registrera ny användare
@@ -16,11 +18,9 @@
     </tr>
     <tr>
         <td>
-            <div class="row" style="display: @Model.LoginVisibility;">
                 <div class="col-md-4">
                     @await Html.PartialAsync("_PartialLogin.cshtml")
                 </div>
-            </div>
         </td>
         <td>
             <form method="post">
