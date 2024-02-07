@@ -12,13 +12,25 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Booking.BookingDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Booking.BookingDate)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Booking.ID)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.Customer)
+            @Html.DisplayFor(model => model.Booking.ID)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Booking.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Booking.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Booking.StopDate)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Booking.StopDate)
@@ -27,7 +39,7 @@
             @Html.DisplayNameFor(model => model.Booking.CarId)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Booking.BookingDate)
+            @Html.DisplayFor(model => model.Booking.CarId)
         </dd>
     </dl>
     

@@ -14,26 +14,27 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Cars
 {
     public class IndexModel : PageModel
     {
-        //private readonly FribergCarRentalsRazorPageEdition.Data.FribergCarRentalsRazorPageEditionContext _context;
         private ICarsRepository _carsRepository;
-        //private ICustomersRepository _customersRepository;
-        //private IBookingsRepository _bookingsRepository;
+        private IUsersRepository _usersRepository;
         private IList<FribergsCarRentals.DataAccess.Data.Car> car = default!;
-
-        //public IndexModel(ICarsRepository carsRepository, ICustomersRepository customersRepository, IBookingsRepository bookingsRepository)
-        public IndexModel(ICarsRepository carsRepository)
+        public IndexModel(ICarsRepository carsRepository, IUsersRepository usersRepository)
         {
             _carsRepository = carsRepository;
-            //_customersRepository = customersRepository;
-            //_bookingsRepository = bookingsRepository;
+            _usersRepository = usersRepository;
         }
 
         public IList<Car> Car { get => car; set => car = value; }
-        public string isAdmin { get; set; }
+        public bool isAdmin { get; set; }
 
         public async Task OnGetAsync()
         {
-            isAdmin = Request.Cookies["isAdmin"];
+            var Username =  Request.Cookies["Username"];
+            var userInDb = _usersRepository.GetByEmail(Username);
+            if (userInDb != null)
+            {
+                isAdmin = userInDb.IsAdmin;
+            }
+            //isAdmin = Request.Cookies["isAdmin"];
             Car = (IList<Car>)_carsRepository.GetAll();
         }
     }

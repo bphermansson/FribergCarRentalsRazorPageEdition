@@ -2,21 +2,23 @@
 @model FribergCarRentalsRazorPageEdition.Pages.AdminModel
 @{
 }
-<h2>Welcome @Model.userName</h2>
 
 @if(Model.isAdmin != null && Model.isAdmin == true)
 {
+    <h2>Welcome @Model.userName</h2>
     <h4>Add / Edit / Delete:</h4>
     <p><a asp-page="/Users/Index">Users</a></p>
     <p><a asp-page="/Cars/Index">Cars</a></p>
     <a asp-page="/Bookings/Index" asp-route-onlyUsers="false">Bookings</a>
 }
 else if (Model.userName == null){
-    Redirect("./Login");
+    <p>You are not logged in.</p>
+    Model.RedirectToPage("./Login");
 }
 else
 {
     string url = HttpContext.Request.Path;
     TempData["url"] = url;
-    <p>This is not an admin account, try again.</p>}
+    <p>This is not an admin account, try again.</p>
+}
 

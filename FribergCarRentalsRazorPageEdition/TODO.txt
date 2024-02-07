@@ -4,11 +4,14 @@ Admin/Bokningar. Wrong language, link doesnt work. No bookings listed. - Fixed
 
 Admin cookie isnt deleted on logout - Strange problem, used another solution to check if admin.
 
-Booking/Delete, faulty table. Back-link goes to car list, not booking list.
+Booking/Delete, faulty table. Back-link goes to car list, not booking list. Fixed
 
-Car list, headers are wrong
+Car list, headers are wrong - Fixed
 
 Car/Edit, ugly table...
 
+Delete booking - table is wrong
+
+Hire car - login - To Index?
 
 

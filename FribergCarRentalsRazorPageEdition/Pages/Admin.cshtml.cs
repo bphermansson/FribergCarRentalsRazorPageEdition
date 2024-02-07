@@ -20,7 +20,14 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             //isAdmin = Request.Cookies["isAdmin"];
             userName = Request.Cookies["Username"];
             var userInDb = _usersRepository.GetByEmail(userName);
-            isAdmin = userInDb.IsAdmin;
+            if(userInDb != null)
+            {
+                isAdmin = userInDb.IsAdmin;
+            }
+            else
+            {
+                isAdmin = false;
+            }
         }
     }
 }
