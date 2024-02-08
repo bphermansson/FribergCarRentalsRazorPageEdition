@@ -12,6 +12,4 @@ Car/Edit, ugly table...
 
 Delete booking - table is wrong
 
-Hire car - login - To Index?
-
 

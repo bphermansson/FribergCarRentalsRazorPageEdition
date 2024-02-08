@@ -5,51 +5,66 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Redigera bokning</h1>
+<h1>Edit booking</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Booking.ID" />
-            <div class="form-group">
-                <label asp-for="Booking.UserEmail" class="control-label"></label>
-                <input asp-for="Booking.UserEmail" class="form-control" readonly />
-                <span asp-validation-for="Booking.UserEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.Customer" class="control-label"></label>
-                <input asp-for="Booking.Customer" class="form-control" />
-                <span asp-validation-for="Booking.Customer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.StartDate" class="control-label"></label>
-                <input asp-for="Booking.StartDate" class="form-control" />
-                <span asp-validation-for="Booking.StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.StopDate" class="control-label"></label>
-                <input asp-for="Booking.StopDate" class="form-control" />
-                <span asp-validation-for="Booking.StopDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.CarId" class="control-label"></label>
-                <input asp-for="Booking.CarId" class="form-control" />
-                <span asp-validation-for="Booking.CarId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.BookingDate" class="control-label"></label>
-                <input asp-for="Booking.BookingDate" class="form-control" />
-                <span asp-validation-for="Booking.BookingDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+<form method="post">
+        <input type="hidden" asp-for="Booking.ID" />
+        <input type="hidden" asp-for="Booking.Customer" />
+
+        <table>
+            <tr>
+                <td>
+                    <label asp-for="Booking.UserEmail" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Booking.UserEmail" class="form-control" readonly />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Booking.StartDate" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Booking.StartDate" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Booking.StopDate" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Booking.StopDate" class="form-control" />
+                </td>
+            <span asp-validation-for="Booking.StopDate" class="text-danger"></span>
+
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Booking.CarId" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Booking.CarId" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Booking.BookingDate" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Booking.BookingDate" class="form-control" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </td>
+            </tr>
+        </table>
+</form>
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>

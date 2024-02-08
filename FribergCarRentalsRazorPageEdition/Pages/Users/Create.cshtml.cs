@@ -21,6 +21,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
 
         [BindProperty]
         public User Customer { get; set; } = default!;
+        [TempData]
+        public string Message { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -30,7 +32,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Customers
                 return Page();
             }
             _customersRepository.Save(Customer);
-            return RedirectToPage("./Index");
+            Message = "New user created";
+            return RedirectToPage("./Confirmation");
         }
     }
 }

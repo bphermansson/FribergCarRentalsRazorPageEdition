@@ -55,14 +55,14 @@
                         @Html.DisplayFor(modelItem => item.StopDate)
                     </td>
                     <td>
-                        <a asp-page="./../Cars/Details" asp-route-id="item.CarId">Details</a>
+                        <a asp-page="./../Cars/Details" asp-route-id=@item.CarId>Details</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.BookingDate)
                     </td>
                     <td>
-                        <a asp-page="./Edit" asp-route-id="item.ID">Edit</a>
-                        <a asp-page="./Delete" asp-route-id="item.ID">Delete</a>
+                        <a asp-page="./Edit" asp-route-id=@item.ID>Edit</a>
+                        <a asp-page="./Delete" asp-route-id=@item.ID>Delete</a>
                     </td>
                 </tr>
                 }

@@ -89,9 +89,9 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
             //    Make = TempData["make"].ToString();
             //}
 
+            Booking.UserEmail = UserEmail;
             Headline = "Confirmation: Thanks for your booking!";
-            Message = $"Customer email: {UserEmail}\nCar make&model: {Make} {Model}\nFrom: {Booking.StartDate} to {Booking.StopDate}";
-            
+            Message = $"Customer email: {Booking.UserEmail}\nCar make&model: {Make} {Model}\nFrom: {Booking.StartDate} to {Booking.StopDate}";
 
             _bookingsRepository.Add(Booking);
             return RedirectToPage("./Confirmation");

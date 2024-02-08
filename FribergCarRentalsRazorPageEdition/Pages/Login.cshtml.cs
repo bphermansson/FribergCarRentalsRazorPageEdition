@@ -41,7 +41,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         {
             LoginVisibility = "";
             LoggedInMessage = "None";
-            TempData["url"] = "./Index";
+            //TempData["url"] = "./Index";
             var cook = Request.Cookies["loggedIn"];
             if (cook == "True")
             {
@@ -115,9 +115,12 @@ namespace FribergCarRentalsRazorPageEdition.Pages
             {
                 httpContextAccessor.HttpContext.Response.Cookies.Append("IsAdmin", "True", options);
             }
-            // Shold return to the car we wanted to rent
-            return RedirectToPage("./Cars/Index");
-
+            string Url = "", Make = "", Model = "";
+            if (TempData.ContainsKey("url"))
+                Url = TempData["url"].ToString();
+            Make = TempData["make"].ToString();
+            Model = TempData["model"].ToString();
+            return RedirectToPage(Url, new { make = Make, model = Model });
         }
     }
 }
