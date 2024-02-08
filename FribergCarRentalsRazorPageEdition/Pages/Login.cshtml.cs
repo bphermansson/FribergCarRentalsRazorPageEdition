@@ -20,7 +20,8 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         [Required]
         [BindProperty]
         public string Password { get; set; }
-
+        [BindProperty]
+        public string Referer { get; set; }
         [BindProperty]
         public User UserModel{ get; set; }
         public  User User { get; set; }
@@ -30,18 +31,16 @@ namespace FribergCarRentalsRazorPageEdition.Pages
         public string Message { get; set; }
         [TempData]
         public string SavedUsername { get; set; }
-
         public MyPagesModel(IUsersRepository usersRepository, IHttpContextAccessor httpContextAccessor)
         {
             _usersRepository = usersRepository;
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public void OnGet()
+        public void OnGet(string referer)
         {
             LoginVisibility = "";
             LoggedInMessage = "None";
-            //TempData["url"] = "./Index";
             var cook = Request.Cookies["loggedIn"];
             if (cook == "True")
             {
@@ -49,6 +48,10 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                 LoggedInMessage = "";
                 Email = Request.Cookies["Username"];
                 Message = "You are logged in.";
+            }
+            else if(referer == "login")
+            {
+                TempData["url"] = "./Index";
             }
         }
 
@@ -84,7 +87,6 @@ namespace FribergCarRentalsRazorPageEdition.Pages
                         Make = TempData["make"].ToString();
                         Model = TempData["model"].ToString();
                     return RedirectToPage(Url, new { make = Make, model = Model });
-
                 }
                 else
                 {

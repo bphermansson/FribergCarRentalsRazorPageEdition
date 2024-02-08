@@ -50,6 +50,7 @@ namespace FribergCarRentalsRazorPageEdition.Pages.Bookings
                 LoginNoticeVisibility = "";
                 BookingFormVisibility = "none";
                 TempData["url"] = "Bookings/Create";
+                TempData["Referer"] = "Booking";
                 TempData["make"] = make;
                 TempData["model"] = model;
                 return RedirectToPage("../Login");

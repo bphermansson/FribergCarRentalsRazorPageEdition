@@ -25,7 +25,7 @@
                 <a asp-page="/About">About the company</a>
             </div>
             <div class="menuitem">
-                <a asp-page="/Login">Log in</a>
+                <a asp-page="/Login" asp-route-referer="login">Log in</a>
             </div>
             <div class="menuitem">
                 <a asp-page="/Logout">Log out</a>
@@ -34,7 +34,7 @@
                 <a asp-page="/Bookings/Index" asp-route-onlyUsers="true">My bookings</a>
             </div>
             <div class="menuitem">
-                <a asp-page="/Admin" asp-route-onlyUsers="true">Admin</a>
+                <a asp-page="/Admin" asp-route-referer="true">Admin</a>
             </div>
         </div>
         <!-- No more float left -->

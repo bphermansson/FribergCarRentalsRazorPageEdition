@@ -55,7 +55,9 @@
                         @Html.DisplayFor(modelItem => item.StopDate)
                     </td>
                     <td>
-                        <a asp-page="./../Cars/Details" asp-route-id=@item.CarId>Details</a>
+                            @if(@item.CarId > 0) {
+                                <a asp-page="./../Cars/Details" asp-route-id=@item.CarId>Details</a>
+                            }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.BookingDate)
