@@ -10,28 +10,28 @@
 <h2>@TempData["message"]</h2>
 
 @{
-    if (Model.Booking != null || @TempData["Booking"] != null)
+    @if (Model.Booking != null || @TempData["Booking"] != null)
     {
         <table class="table">
             <thead>
                 <tr>
                     <th>
-                        Html.DisplayNameFor(model => model.Booking[0].ID)
+                        @Html.DisplayNameFor(model => model.Booking[0].ID)
                     </th>
                     <th>
-                        Html.DisplayNameFor(model => model.Booking[0].UserEmail)
+                        @Html.DisplayNameFor(model => model.Booking[0].UserEmail)
                     </th>
                     <th>
-                        Html.DisplayNameFor(model => model.Booking[0].StartDate)
+                        @Html.DisplayNameFor(model => model.Booking[0].StartDate)
                     </th>
                     <th>
-                        Html.DisplayNameFor(model => model.Booking[0].StopDate)
+                        @Html.DisplayNameFor(model => model.Booking[0].StopDate)
                     </th>
                     <th>
                         Car Info
                     </th>
                     <th>
-                        Html.DisplayNameFor(model => model.Booking[0].BookingDate)
+                        @Html.DisplayNameFor(model => model.Booking[0].BookingDate)
                     </th>
                     <th>
                         Admin
@@ -39,26 +39,26 @@
                 </tr>
             </thead>
             <tbody>
-                foreach (var item in Model.Booking)
+                @foreach (var item in Model.Booking)
                 {
                 <tr>
                     <td>
-                        Html.DisplayFor(modelItem => item.ID)
+                        @Html.DisplayFor(modelItem => item.ID)
                     </td>
                     <td>
-                        Html.DisplayFor(modelItem => item.UserEmail)
+                        @Html.DisplayFor(modelItem => item.UserEmail)
                     </td>
                     <td>
-                        Html.DisplayFor(modelItem => item.StartDate)
+                        @Html.DisplayFor(modelItem => item.StartDate)
                     </td>
                     <td>
-                        Html.DisplayFor(modelItem => item.StopDate)
+                        @Html.DisplayFor(modelItem => item.StopDate)
                     </td>
                     <td>
                         <a asp-page="./../Cars/Details" asp-route-id="item.CarId">Details</a>
                     </td>
                     <td>
-                        Html.DisplayFor(modelItem => item.BookingDate)
+                        @Html.DisplayFor(modelItem => item.BookingDate)
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="item.ID">Edit</a>
@@ -66,8 +66,6 @@
                     </td>
                 </tr>
                 }
-                }
-
             </tbody>
         </table>
     }
